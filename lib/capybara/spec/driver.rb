@@ -14,6 +14,12 @@ shared_examples_for 'driver' do
       @driver.visit('/foo')
       @driver.current_url.should include('/foo')
     end
+
+    it "should not escape URLs" do
+      @driver.visit('/esc%20ape?foo%7Cbar')
+      @driver.current_url.should include('/esc%20ape?foo%7Cbar')
+      @driver.body.should include('Escaped!')
+    end
   end
 
   describe '#body' do

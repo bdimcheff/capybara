@@ -14,6 +14,10 @@ class TestApp < Sinatra::Base
     'Another World'
   end
 
+  get '/esc ape' do
+    'Escaped!'
+  end
+
   get '/redirect' do
     redirect '/redirect_again'
   end
